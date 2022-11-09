@@ -2,6 +2,8 @@ package com.example.architecture
 
 import com.example.architecture.mvvm.CalculatorEvent
 import com.example.architecture.mvvm.CalculatorViewModel
+import junit.framework.Assert.assertEquals
+import junit.framework.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -16,12 +18,12 @@ class CalculatorViewModelTest {
     // CalculatorEvent.UpdateTextA
 
     @Test
-    fun `update text A, when new text is empty, A is empty`() {
+    fun `handleUpdateTextA, when new text is empty, A is empty`() {
         val newA = ""
 
         calculatorViewModel.handleEvent(CalculatorEvent.UpdateTextA(newA))
 
-        assert(calculatorViewModel.textA.isEmpty())
+        assertTrue(calculatorViewModel.textA.isEmpty())
     }
 
     @Test
@@ -31,7 +33,7 @@ class CalculatorViewModelTest {
 
         calculatorViewModel.handleEvent(CalculatorEvent.UpdateTextA(newA))
 
-        assert(calculatorViewModel.textA == oldA)
+        assertEquals(oldA, calculatorViewModel.textA)
     }
 
     @Test
